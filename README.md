@@ -1,68 +1,62 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Cryto Currency Exchange App
 
-## Available Scripts
+> In this project, `yarn` is used as the tool to install and run the project.
+> Everything would work the same replacing the `yarn` command for its equivalent
+> from `npm`.
 
-In the project directory, you can run:
+## Set up project dependencies
 
-### `npm start`
+```bash
+yarn
+```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## To run the project
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+**Please make sure you read completely this section before trying to run the 
+project.**
 
-### `npm test`
+This project uses the Coinmarketcap and Exchangeratesapi public APIs to fetch 
+the current cryptocurrency and currency exchange rate values. In order to use
+Coinmarketcap APIs, you need to provide a private API_KEY. As it is considered
+a very bad security practices to include secrets like API_KEY in any repository
+you must provide that API_KEY yourself. To do that, you have two ways:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Add a `.env` file in the root folder of this project with the following 
+content:
 
-### `npm run build`
+```
+API_KEY=YOUR_API_KEY_HERE
+```
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Or set `API_KEY` as an environment variable in your system.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Once you have done that, you can run the project like this:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+yarn
+```
 
-### `npm run eject`
+Or if you want to set an inline environment variable:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+API_KEY=YOUR_KEY yarn start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**IMPORTANT:** The project runs the client server in port `3000` and proxy
+server in the port `3001`. This values are hardcoded so make sure you are not
+running anything on those server. On a real application, I would make this
+values configurable, but to keep it simple, I decided not to change them.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Mock mode
+If you setup the environment variable `MOCK_MODE=true`, you will get the API 
+responses from mock data in the server. This only works with `BTC`.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You can do that by adding the value to the `.env` file or by setting the value
+as an environment variable in your machine.
 
-## Learn More
+## Run the tests
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```bash
+yarn test:client # to run client side tests
+yarn test:server # to run server side tests
+```

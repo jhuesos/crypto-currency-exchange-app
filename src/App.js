@@ -1,8 +1,20 @@
 import React from 'react';
-import './App.css';
+import styled from 'styled-components';
+
+import CryptoPrice from './components/CryptoPrice';
 
 function App() {
-  return <div className="App">APP</div>;
+  return (
+    <Container>
+      <CryptoPrice />
+    </Container>
+  );
 }
+
+const Container = styled.div`
+  background-color: #282c34;
+  font-size: 16px;
+  color: white;
+`;
 
 export default App;
