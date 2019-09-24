@@ -1,6 +1,5 @@
 const requestify = require('requestify');
 const { BIT_COIN_RESPONSE } = require('./mock-responses');
-const get = require('lodash/get');
 
 const quoteCurrency = async symbol => {
   const BASE_URL = 'https://pro-api.coinmarketcap.com/v1';
@@ -32,7 +31,14 @@ const quoteCurrency = async symbol => {
 };
 
 const currencyValueFromResponse = (symbol, response) => {
-  return get(response, `data.${symbol}.quote.USD.price`);
+  const { data } = response;
+  const value = data[symbol];
+  const {
+    quote: {
+      USD: { price },
+    },
+  } = value;
+  return price;
 };
 
 module.exports = {

@@ -38,7 +38,7 @@ describe('coinmarket-api', () => {
     });
 
     it('should not call requestify if MOCK_MODE is true', () => {
-      process.env.MOCK_MODE = true;
+      process.env.MOCK_MODE = 'true';
       quoteCurrency('BTC');
 
       expect(requestify.get).not.toHaveBeenCalled();

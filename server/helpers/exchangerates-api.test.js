@@ -15,7 +15,7 @@ describe('exchangerates-api', () => {
     });
 
     it('should not call requestify if MOCK_MODE is true', () => {
-      process.env.MOCK_MODE = true;
+      process.env.MOCK_MODE = 'true';
       getExchangeRates();
 
       expect(requestify.get).not.toHaveBeenCalled();
