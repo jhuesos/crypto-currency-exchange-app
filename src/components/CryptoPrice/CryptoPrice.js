@@ -18,7 +18,6 @@ export default function CryptoPrice() {
     try {
       const results = await queryValues(symbol);
       setResults(results);
-      setSymbol('');
     } catch (error) {
       // FIXME: we should always do something with errors. Future improement
     } finally {
@@ -51,7 +50,6 @@ export default function CryptoPrice() {
           <div>Searching...</div>
         ) : (
           <div data-testid="currency-table-results">
-            <p>The {symbol} value in different currenies is:</p>
             <CurrencyTable data={results} />
           </div>
         )}
